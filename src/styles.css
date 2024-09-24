@@ -1,0 +1,51 @@
+.app {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input, form select {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.historial-container {
+    margin-top: 20px;
+}
+
+.historial-container ul {
+    list-style-type: none;
+}
+
+.historial-container ul li {
+    background-color: #f4f4f4;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.borrar-historial {
+    margin-top: 20px;
+    background-color: red;
+}

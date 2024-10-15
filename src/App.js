@@ -1,8 +1,11 @@
+// src/App.js
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CalculatorForm from './components/CalculatorForm';
 import Resultados from './components/Resultados';
 import Historial from './components/Historial';
 import Grafico from './components/Grafico';
+import NavBar from './components/NavBar'; 
 import './styles.css';
 
 const App = () => {
@@ -49,13 +52,18 @@ const App = () => {
     };
 
     return (
-        <div className="app">
-            <h1>Calculadora de Calorías</h1>
-            <CalculatorForm onCalculate={handleCalculate} />
-            <Resultados resultados={resultados} />
-            <Historial />
-            <Grafico data={graficoData} />
-        </div>
+        <Router>
+            <div className="app">
+                <NavBar />
+                <h1>Calculadora de Calorías</h1>
+                <Routes>
+                    <Route path="/" element={<CalculatorForm onCalculate={handleCalculate} />} />
+                    <Route path="/resultados" element={<Resultados resultados={resultados} />} />
+                    <Route path="/historial" element={<Historial />} />
+                    <Route path="/grafico" element={<Grafico data={graficoData} />} />
+                </Routes>
+            </div>
+        </Router>
     );
 };
 

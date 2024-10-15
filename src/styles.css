@@ -1,51 +1,196 @@
-.app {
-    font-family: Arial, sans-serif;
-    text-align: center;
+/* Definir los colores para los temas oscuro y claro */
+:root {
+    --primary-color: #64b5f6;
+    --background-color-dark: #121212;
+    --background-color-light: #f0f0f0;
+    --text-color-dark: #ffffff;
+    --text-color-light: #000000;
+    --transition-duration: 0.5s;
+    --historial-bg-dark: #1c1c1c;
+    --historial-bg-light: #e0e0e0;
 }
 
-form {
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color-dark);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+body.light-theme {
+    background: linear-gradient(135deg, #f9f9f9, #e6e6fa, #ffd1dc);
+    color: var(--text-color-light);
+}
+
+/* Contenedor principal centrado */
+.main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
 }
 
-form label {
-    margin-top: 10px;
+/* Estilos para la barra de navegación */
+.nav {
+    width: 100%;
+    background-color: var(--background-color-dark);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    position: relative;
 }
 
-form input, form select {
-    padding: 5px;
-    margin-bottom: 10px;
+/* Logo o Título de la App en la Nav */
+.nav h1 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+/* Estilo para los enlaces de navegación */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espaciado entre los enlaces */
+}
+
+.nav-links a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color var(--transition-duration);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Estilo para el botón de cambio de tema en la nav */
+.theme-btn {
+    background-color: transparent;
     border: none;
+    font-size: 24px;
     cursor: pointer;
+    color: var(--text-color-light);
+    transition: color var(--transition-duration);
 }
 
-button:hover {
-    background-color: #0056b3;
+.theme-btn:hover {
+    color: var(--primary-color);
 }
 
+/* Estilo del título */
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulario centrado */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón de envío */
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1e88e5;
+}
+
+/* Estilos para el historial */
 .historial-container {
     margin-top: 20px;
+    background-color: var(--historial-bg-dark);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    max-height: 300px;
+    text-align: left;
 }
 
 .historial-container ul {
     list-style-type: none;
+    padding-left: 0;
 }
 
-.historial-container ul li {
-    background-color: #f4f4f4;
-    margin: 5px;
+.historial-container li {
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 10px;
     border-radius: 5px;
 }
 
+/* Botón para borrar el historial */
 .borrar-historial {
+    margin-top: 10px;
+    background-color: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.borrar-historial:hover {
+    background-color: #f50057;
+}
+
+/* Contenedor para el gráfico */
+.grafico-container {
     margin-top: 20px;
-    background-color: red;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--historial-bg-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón para cambiar el tema */
+.theme-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary-color);
 }

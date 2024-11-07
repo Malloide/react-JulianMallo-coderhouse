@@ -1,5 +1,5 @@
+// src/components/CalculatorForm.jsx
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
 
 const CalculatorForm = ({ onCalculate }) => {
     const [nombre, setNombre] = useState('');
@@ -11,42 +11,20 @@ const CalculatorForm = ({ onCalculate }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        if (diasEjercicio < 0 || diasEjercicio > 7) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'El número de días de ejercicio debe estar entre 0 y 7.'
-            });
-            return;
-        }
-
-        onCalculate({ nombre, peso, altura, edad, genero, diasEjercicio });
+        onCalculate({ nombre, peso: parseFloat(peso), altura: parseFloat(altura), edad: parseInt(edad), genero, diasEjercicio: parseInt(diasEjercicio) });
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>Nombre:</label>
-            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
-            
-            <label>Peso (kg):</label>
-            <input type="number" value={peso} onChange={(e) => setPeso(e.target.value)} required />
-            
-            <label>Altura (cm):</label>
-            <input type="number" value={altura} onChange={(e) => setAltura(e.target.value)} required />
-            
-            <label>Edad:</label>
-            <input type="number" value={edad} onChange={(e) => setEdad(e.target.value)} required />
-            
-            <label>Género:</label>
-            <select value={genero} onChange={(e) => setGenero(e.target.value)} required>
+            <input type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+            <input type="number" placeholder="Peso (kg)" value={peso} onChange={(e) => setPeso(e.target.value)} required />
+            <input type="number" placeholder="Altura (cm)" value={altura} onChange={(e) => setAltura(e.target.value)} required />
+            <input type="number" placeholder="Edad" value={edad} onChange={(e) => setEdad(e.target.value)} required />
+            <select value={genero} onChange={(e) => setGenero(e.target.value)}>
                 <option value="hombre">Hombre</option>
                 <option value="mujer">Mujer</option>
             </select>
-            
-            <label>Días de ejercicio por semana:</label>
-            <input type="number" value={diasEjercicio} onChange={(e) => setDiasEjercicio(e.target.value)} required />
-            
+            <input type="number" placeholder="Días de Ejercicio por Semana" value={diasEjercicio} onChange={(e) => setDiasEjercicio(e.target.value)} required />
             <button type="submit">Calcular</button>
         </form>
     );

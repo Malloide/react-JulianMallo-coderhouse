@@ -1,6 +1,8 @@
 // src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from './FireBase/firebaseConfig';
 import CalculatorForm from './components/CalculatorForm';
 import Resultados from './components/Resultados';
 import Historial from './components/Historial';
@@ -13,22 +15,20 @@ const App = () => {
     const [graficoData, setGraficoData] = useState([]);
 
     const calcularMetabolismoBasal = (peso, altura, edad, genero) => {
-        if (genero === 'hombre') {
-            return 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad);
-        } else {
-            return 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad);
-        }
+        return genero === 'hombre'
+            ? 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad)
+            : 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad);
     };
 
     const calcularCaloriasConActividad = (metabolismoBasal, diasEjercicio) => {
-        let factorActividad = [1.2, 1.375, 1.55, 1.725, 1.9][Math.min(diasEjercicio, 4)];
+        const factorActividad = [1.2, 1.375, 1.55, 1.725, 1.9][Math.min(diasEjercicio, 4)];
         return metabolismoBasal * factorActividad;
     };
 
     const calcularCaloriasDefinicion = (caloriasConActividad) => caloriasConActividad * 0.8;
     const calcularCaloriasVolumen = (caloriasConActividad) => caloriasConActividad * 1.2;
 
-    const handleCalculate = ({ nombre, peso, altura, edad, genero, diasEjercicio }) => {
+    const handleCalculate = async ({ nombre, peso, altura, edad, genero, diasEjercicio }) => {
         const metabolismoBasal = calcularMetabolismoBasal(peso, altura, edad, genero);
         const caloriasConActividad = calcularCaloriasConActividad(metabolismoBasal, diasEjercicio);
         const caloriasDefinicion = calcularCaloriasDefinicion(caloriasConActividad);
@@ -45,10 +45,11 @@ const App = () => {
         setResultados(resultadosCalculados);
         setGraficoData([metabolismoBasal, caloriasConActividad, caloriasDefinicion, caloriasVolumen]);
 
-        // Guardar en el historial
-        const historialActual = JSON.parse(localStorage.getItem('historialCalculos')) || [];
-        historialActual.push(resultadosCalculados.join(' | '));
-        localStorage.setItem('historialCalculos', JSON.stringify(historialActual));
+        try {
+            await addDoc(collection(db, 'historialCalculos'), { resultados: resultadosCalculados });
+        } catch (error) {
+            console.error("Error al guardar en Firebase:", error);
+        }
     };
 
     return (
@@ -68,3 +69,4 @@ const App = () => {
 };
 
 export default App;
+

@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 /* Definir los colores para los temas oscuro y claro */
 :root {
     --primary-color: #64b5f6;
@@ -266,4 +271,54 @@ h1 {
     .nav h1 {
         font-size: 1.2rem;
     }
+}
+/* Estilos para el tema claro */
+/* Estilos para el tema claro */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.light-theme {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+/* Estilos para el tema oscuro */
+body.dark-theme {
+    background-color: #111827;
+    color: #f3f4f6;
+}
+
+/* Animación para elementos de la NavBar */
+.nav-item {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.nav-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fondo y texto para tema claro */
+.light-theme {
+    background-color: #e0f7fa; /* Azul claro */
+    color: #003366; /* Azul oscuro */
+}
+
+/* Fondo y texto para tema oscuro */
+.dark-theme {
+    background-color: #002333; /* Azul oscuro */
+    color: #ffffff; /* Blanco */
+}
+
+/* Animación en los enlaces de NavBar */
+.nav-link {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+    color: #ffd700; /* Dorado claro */
 }

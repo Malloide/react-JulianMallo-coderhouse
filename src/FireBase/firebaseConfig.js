@@ -19,7 +19,7 @@
 
   // Get Firestore instance
   const db = getFirestore(app);
-
+  
   // Get Analytics instance
   const analytics = getAnalytics(app);
 

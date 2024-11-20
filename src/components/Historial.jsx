@@ -1,4 +1,3 @@
-// src/components/Historial.jsx
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { db } from '../FireBase/firebaseConfig';
@@ -40,10 +39,12 @@ const Historial = () => {
 
     return (
         <div className="historial-container">
-            <h2>Historial</h2>
+            <h2>Historial de Cálculos</h2>
             <ul>
                 {historial.map((entry, index) => (
-                    <li key={index}>{entry.resultados.join(" | ")}</li>
+                    <li key={index}>
+                        <strong>{entry.tipoCalculo}</strong>: {entry.resultados.join(" | ")}
+                    </li>
                 ))}
             </ul>
             <button onClick={borrarHistorial} className="borrar-historial">Borrar Historial</button>

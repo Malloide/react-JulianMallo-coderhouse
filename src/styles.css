@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Definir los colores para los temas oscuro y claro */
+/* Variables de tema */
 :root {
     --primary-color: #64b5f6;
     --background-color-dark: #121212;
@@ -40,16 +39,16 @@ body.light-theme {
     flex-direction: column;
     align-items: center;
     width: 90%;
-    max-width: 500px; /* Se ajusta el tamaño máximo para pantallas más grandes */
+    max-width: 500px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 15px; /* Esquinas redondeadas */
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(5px);
-    margin-top: 20px; /* Añadido para separar la nav del cuadrante */
+    margin-top: 20px;
 }
 
-/* Estilos para la barra de navegación */
+/* Barra de navegación */
 .nav {
     width: 100%;
     background-color: var(--background-color-dark);
@@ -59,21 +58,19 @@ body.light-theme {
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    position: relative;
 }
 
-/* Logo o Título de la App en la Nav */
 .nav h1 {
     color: var(--primary-color);
     font-size: 1.5rem;
     margin: 0;
 }
 
-/* Estilo para los enlaces de navegación */
+/* Enlaces de navegación */
 .nav-links {
     display: flex;
     gap: 20px;
-    margin-left: auto; /* Para alinear los links hacia la derecha */
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -87,7 +84,6 @@ body.light-theme {
     color: var(--primary-color);
 }
 
-/* Estilo para el botón de cambio de tema en la nav */
 .theme-btn {
     background-color: transparent;
     border: none;
@@ -101,9 +97,9 @@ body.light-theme {
     color: var(--primary-color);
 }
 
-/* Menu hamburguesa (para móviles) */
+/* Menu hamburguesa */
 .hamburger-menu {
-    display: none; /* Ocultar en pantallas grandes */
+    display: none;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
@@ -116,7 +112,6 @@ body.light-theme {
     border-radius: 5px;
 }
 
-/* Menú desplegable */
 .nav-links-mobile {
     display: none;
     flex-direction: column;
@@ -132,34 +127,20 @@ body.light-theme {
 }
 
 .nav-links-mobile.active {
-    display: flex; /* Mostrar cuando está activo */
+    display: flex;
 }
 
-/* Estilo de los enlaces dentro del menú hamburguesa */
-.nav-links-mobile a {
-    color: var(--text-color-light);
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    transition: color var(--transition-duration);
-}
-
-.nav-links-mobile a:hover {
-    color: var(--primary-color);
-}
-
-/* Estilos para el historial */
+/* Estilo para el historial */
 .historial-container {
     margin-top: 20px;
     background-color: var(--historial-bg-dark);
     padding: 20px;
-    border-radius: 15px; /* Esquinas redondeadas */
+    border-radius: 15px;
     width: 100%;
     max-width: 400px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     max-height: 300px;
-    text-align: left;
 }
 
 .historial-container ul {
@@ -174,7 +155,6 @@ body.light-theme {
     border-radius: 5px;
 }
 
-/* Botón para borrar el historial */
 .borrar-historial {
     margin-top: 10px;
     background-color: #ff4081;
@@ -189,7 +169,6 @@ body.light-theme {
     background-color: #f50057;
 }
 
-/* Contenedor para el gráfico */
 .grafico-container {
     margin-top: 20px;
     width: 100%;
@@ -197,19 +176,18 @@ body.light-theme {
     height: 300px;
     border: 1px solid #ccc;
     padding: 20px;
-    border-radius: 15px; /* Esquinas redondeadas */
+    border-radius: 15px;
     background-color: var(--historial-bg-light);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo del título */
 h1 {
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Estilos para el botón de cambio de tema */
+/* Estilo del botón de cambio de tema */
 .theme-btn {
     position: absolute;
     top: 20px;
@@ -221,49 +199,42 @@ h1 {
     color: var(--primary-color);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-    /* Hacer que el menú hamburguesa sea visible en pantallas pequeñas */
     .hamburger-menu {
         display: flex;
     }
 
-    /* Alinear los enlaces en una columna y ocultarlos por defecto */
     .nav-links {
         display: none;
     }
 
-    /* Se ajusta el tamaño del contenedor de la calculadora en dispositivos móviles */
     .main-container {
         width: 95%;
-        max-width: 100%; /* No excede el tamaño de la pantalla */
+        max-width: 100%;
         padding: 15px;
-        border-radius: 10px; /* Esquinas redondeadas */
+        border-radius: 10px;
     }
 
-    /* Mostrar los enlaces de navegación en el menú hamburguesa */
     .nav-links-mobile {
         display: flex;
     }
 
-    /* Los enlaces en el menú hamburguesa también tendrán esquinas redondeadas */
     .nav-links-mobile a {
         padding: 10px;
         border-radius: 5px;
     }
 
-    /* Ajustar el tamaño del historial en móviles */
     .historial-container {
         width: 100%;
         max-width: 100%;
     }
 
-    /* Ajustar el gráfico para pantallas más pequeñas */
     .grafico-container {
         width: 100%;
         height: 250px;
     }
 
-    /* Asegurarse de que la barra de navegación sea más pequeña en móviles */
     .nav {
         padding: 10px 15px;
     }
@@ -272,53 +243,15 @@ h1 {
         font-size: 1.2rem;
     }
 }
-/* Estilos para el tema claro */
-/* Estilos para el tema claro */
-body {
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
 
+/* Tema claro */
 body.light-theme {
     background-color: #f3f4f6;
     color: #111827;
 }
 
-/* Estilos para el tema oscuro */
+/* Tema oscuro */
 body.dark-theme {
     background-color: #111827;
     color: #f3f4f6;
-}
-
-/* Animación para elementos de la NavBar */
-.nav-item {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.nav-item.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Fondo y texto para tema claro */
-.light-theme {
-    background-color: #e0f7fa; /* Azul claro */
-    color: #003366; /* Azul oscuro */
-}
-
-/* Fondo y texto para tema oscuro */
-.dark-theme {
-    background-color: #002333; /* Azul oscuro */
-    color: #ffffff; /* Blanco */
-}
-
-/* Animación en los enlaces de NavBar */
-.nav-link {
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.nav-link:hover {
-    transform: scale(1.1);
-    color: #ffd700; /* Dorado claro */
 }

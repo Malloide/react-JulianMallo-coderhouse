@@ -10,7 +10,6 @@ const NavBar = ({ toggleTheme }) => {
                 <li><Link to="/historial">Historial</Link></li>
                 <li><Link to="/grafico">Gráfico</Link></li>
             </ul>
-            <button onClick={toggleTheme} className="text-xl">🌙</button>
         </nav>
     );
 };

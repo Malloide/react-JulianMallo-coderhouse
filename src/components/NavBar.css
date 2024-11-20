@@ -20,6 +20,7 @@ input, select, button {
     font-size: 16px;
 }
 
+/* Contenedor para el historial */
 .historial-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;

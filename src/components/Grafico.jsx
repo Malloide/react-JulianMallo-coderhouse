@@ -34,6 +34,19 @@ const Grafico = ({ data }) => {
 
         svg.append("g")
             .call(d3.axisLeft(yScale));
+
+        // Añadir las etiquetas para las barras
+        svg.selectAll(".text")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "text")
+            .attr("x", (d, i) => xScale(xScale.domain()[i]) + xScale.bandwidth() / 2)
+            .attr("y", d => yScale(d) - 5)  // Ajuste de la posición para que la etiqueta esté sobre la barra
+            .attr("text-anchor", "middle")
+            .attr("font-size", "12px")
+            .attr("fill", "#000")
+            .text(d => d);  // Muestra el valor de la barra
     }, [data]);
 
     return <div id="grafico"></div>;

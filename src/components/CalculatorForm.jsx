@@ -90,13 +90,13 @@ const CalculatorForm = ({ onCalculate }) => {
             <input
                 type="number"
                 placeholder="Días de Ejercicio por Semana"
-                value={diasEjercicio}
+                value={diasEjercicio}   
                 onChange={(e) => setDiasEjercicio(e.target.value)}
                 required
                 className="w-full p-2 border rounded"
             />
             {error && <p className="text-red-500">{error}</p>}
-            <button type="submit" className="bg-blue-500  w-full p-2 rounded hover:bg-blue-600">
+            <button type="submit" className="bg-blue-500 text-white w-full p-2 rounded hover:bg-blue-600">
                 Calcular
             </button>
         </form>

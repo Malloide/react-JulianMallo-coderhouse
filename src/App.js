@@ -80,7 +80,7 @@ const App = () => {
 		<Router>
 			<div
 				className={`${
-					darkTheme ? 'bg-blue-100 text-gray-900' : 'bg-blue-900 text-white'
+					darkTheme ? 'text-white bg-blue-100' : 'bg-blue-900 text-gray-900'
 				} flex flex-col w-screen h-screen transition-colors duration-500`}
 			>
 				<div>

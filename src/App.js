@@ -79,9 +79,7 @@ const App = () => {
 	return (
 		<Router>
 			<div
-				className={`${
-					darkTheme ? 'text-white bg-blue-100' : 'bg-blue-900 text-gray-900'
-				} flex flex-col w-screen h-screen transition-colors duration-500`}
+				className={`${darkTheme ? 'bg-blue-100' : 'bg-blue-900'} text-white flex flex-col w-screen h-screen transition-colors duration-500`}
 			>
 				<div>
 					<NavBar animateLinks={true} toggleTheme={toggleTheme} />

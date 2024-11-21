@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = ({ toggleTheme }) => {
 	return (
-		<nav className="bg-gray-800 text-white p-4 flex  items-center">
+		<nav className="bg-gray-800 p-4 flex  items-center">
 			<ul className="flex gap-4 justify-center">
 				<li>
 					<Link to="/">Calculadora</Link>
@@ -21,7 +21,7 @@ const NavBar = ({ toggleTheme }) => {
 			<div className="flex-1 flex justify-end items-end">
 				<button
 					onClick={toggleTheme}
-					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform duration-500"
+					className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform duration-500"
 				>
 					{toggleTheme ? '🌞' : '🌙'}
 				</button>
